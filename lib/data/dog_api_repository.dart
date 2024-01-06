@@ -30,12 +30,12 @@ class DogApiRepository {
   }
 }
 
-final getAllBreedsProvider = FutureProvider<Breeds>((ref) {
+final getAllBreedsProvider = FutureProvider.autoDispose<Breeds>((ref) {
   final repository = ref.watch(dogApiRepositoryProvider);
   return repository.getAllBreeds();
 });
 
-final getImageByBreedProvider = FutureProvider.family<String, String>((ref, breed) {
+final getImageByBreedProvider = FutureProvider.autoDispose.family<String, String>((ref, breed) {
   final repository = ref.watch(dogApiRepositoryProvider);
   return repository.getImageByBreed(breed);
 });

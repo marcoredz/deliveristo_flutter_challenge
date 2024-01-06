@@ -12,6 +12,7 @@ dependencies:
   dio: ^5.4.0
   flutter_riverpod: ^2.4.9
   json_annotation: ^4.8.1
+  easy_debounce: ^2.0.3
 
 dev_dependencies:
   flutter_test:
