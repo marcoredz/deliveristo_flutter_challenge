@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'core/theme.dart';
+import 'core/widgets/bottom_app_bar.dart';
+import 'presentation/main_screen.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+    return ProviderScope(
+      child: MaterialApp(
+        theme: appTheme,
+        home: Scaffold(
+          appBar: AppBar(),
+          body: const MainScreen(),
+          floatingActionButton: const SizedBox.shrink(),
+          bottomNavigationBar: const CustomBottomAppBar(),
         ),
       ),
     );
