@@ -28,7 +28,7 @@ class SelectBreedListView extends ConsumerWidget {
                 (subBreeds.isNotEmpty == true) ? Text('Sottorazze: ${subBreeds.join(', ')}') : null,
             onTap: () {
               ref.read(selectBreedProvider.notifier).selectBreed(breed);
-              Navigator.of(context).pop();
+              Navigator.pop(context);
             },
           );
         },

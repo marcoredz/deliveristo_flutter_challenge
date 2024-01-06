@@ -46,7 +46,7 @@ class CustomBottomAppBar extends StatelessWidget {
             const SizedBox(width: 16),
             Expanded(
               child: TextButton(
-                onPressed: selectedBreed != null
+                onPressed: selectedBreed != null && selectedBreed.value.isNotEmpty
                     ? () {
                         showModalBottomSheet<void>(
                           context: context,

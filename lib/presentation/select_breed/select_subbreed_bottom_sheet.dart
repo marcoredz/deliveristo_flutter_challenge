@@ -40,7 +40,7 @@ class SelectSubBreedBottomSheet extends ConsumerWidget {
                     trailing: isSelected ? const Icon(Icons.check) : null,
                     onTap: () {
                       ref.read(selectBreedProvider.notifier).selectSubBreed(subBreed);
-                      Navigator.of(context).pop();
+                      Navigator.pop(context);
                     },
                   );
                 },
