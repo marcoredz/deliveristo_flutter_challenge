@@ -5,14 +5,15 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'random_dog_repository.g.dart';
 
-final randomDogRepositoryProvider = Provider<DogApiRepository>(
-  (ref) => DogApiRepository(ref.watch(dioProvider)),
-);
+@riverpod
+RandomDogRepository randomDogRepository(RandomDogRepositoryRef ref) {
+  return RandomDogRepository(ref.watch(dioProvider));
+}
 
-class DogApiRepository {
+class RandomDogRepository {
   final Dio _client;
 
-  const DogApiRepository(this._client);
+  const RandomDogRepository(this._client);
 
   Future<String> getRandomImageByBreed(String breed) async {
     final response = await _client.get('breed/$breed/images/random');

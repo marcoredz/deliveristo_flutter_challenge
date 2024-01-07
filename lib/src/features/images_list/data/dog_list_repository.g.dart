@@ -6,6 +6,22 @@ part of 'dog_list_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+String _$dogListRepositoryHash() => r'ec0c6711b99c6602e49895ee3dfe73357053585f';
+
+/// See also [dogListRepository].
+@ProviderFor(dogListRepository)
+final dogListRepositoryProvider =
+    AutoDisposeProvider<DogListRepository>.internal(
+  dogListRepository,
+  name: r'dogListRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$dogListRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef DogListRepositoryRef = AutoDisposeProviderRef<DogListRepository>;
 String _$getImagesListByBreedHash() =>
     r'fa4ab703ce197fdb8fd464c65eb7cfa91d32fec1';
 

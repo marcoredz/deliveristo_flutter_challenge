@@ -1,14 +1,13 @@
 import 'package:deliveristo_flutter_challenge/src/features/select_breed/data/breed_list_repository.dart';
 import 'package:deliveristo_flutter_challenge/src/shared/domain/models/breeds.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'select_breed_state.dart';
 
-final selectBreedProvider = AutoDisposeNotifierProvider<SelectBreedNotifier, SelectBreedState>(
-  SelectBreedNotifier.new,
-);
+part 'select_breed_notifier.g.dart';
 
-class SelectBreedNotifier extends AutoDisposeNotifier<SelectBreedState> {
+@riverpod
+class SelectBreed extends _$SelectBreed {
   @override
   SelectBreedState build() {
     return SelectBreedState(

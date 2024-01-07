@@ -5,14 +5,15 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'dog_list_repository.g.dart';
 
-final dogListRepositoryProvider = Provider<DogApiRepository>(
-  (ref) => DogApiRepository(ref.watch(dioProvider)),
-);
+@riverpod
+DogListRepository dogListRepository(DogListRepositoryRef ref) {
+  return DogListRepository(ref.watch(dioProvider));
+}
 
-class DogApiRepository {
+class DogListRepository {
   final Dio _client;
 
-  const DogApiRepository(this._client);
+  const DogListRepository(this._client);
 
   Future<List<String>> getImagesListByBreed(String breed) async {
     final response = await _client.get('breed/$breed/images');

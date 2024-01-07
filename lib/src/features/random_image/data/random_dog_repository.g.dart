@@ -6,6 +6,23 @@ part of 'random_dog_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+String _$randomDogRepositoryHash() =>
+    r'3425dd615ff793834e0e568926e6ec19d703f308';
+
+/// See also [randomDogRepository].
+@ProviderFor(randomDogRepository)
+final randomDogRepositoryProvider =
+    AutoDisposeProvider<RandomDogRepository>.internal(
+  randomDogRepository,
+  name: r'randomDogRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$randomDogRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef RandomDogRepositoryRef = AutoDisposeProviderRef<RandomDogRepository>;
 String _$getImageByBreedHash() => r'f6acabf7151e3396eea5fd5d796a0c0f2eb2016b';
 
 /// Copied from Dart SDK
