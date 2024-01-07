@@ -39,11 +39,12 @@ class RandomImageSection extends ConsumerWidget {
           children: [
             const FaIcon(FontAwesomeIcons.dice),
             const SizedBox(width: 16),
-            Text(
-              'Get random image',
-              style: theme.textTheme.titleMedium,
+            Expanded(
+              child: Text(
+                'Genera un immagine casuale',
+                style: theme.textTheme.titleMedium,
+              ),
             ),
-            const Spacer(),
             ElevatedButton.icon(
               icon: const FaIcon(
                 FontAwesomeIcons.arrowsRotate,
@@ -54,7 +55,7 @@ class RandomImageSection extends ConsumerWidget {
                   : () {
                       ref.invalidate(_randomImageProvider);
                     },
-              label: const Text('New'),
+              label: const Text('Nuova'),
             )
           ],
         ),

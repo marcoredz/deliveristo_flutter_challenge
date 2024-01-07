@@ -1,6 +1,6 @@
 import 'package:deliveristo_flutter_challenge/core/http_client.dart';
-import 'package:deliveristo_flutter_challenge/data/dog_api_response.dart';
 import 'package:deliveristo_flutter_challenge/data/models/breeds.dart';
+import 'package:deliveristo_flutter_challenge/data/models/dog_api_response.dart';
 import 'package:dio/dio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -23,6 +23,8 @@ class DogApiRepository {
     return dogApiResponse.message;
   }
 
+  // Random section
+
   Future<String> getRandomImageByBreed(String breed) async {
     final response = await _client.get('breed/$breed/images/random');
 
@@ -35,6 +37,24 @@ class DogApiRepository {
     final response = await _client.get('breed/$breed/$subBreed/images/random');
 
     final dogApiResponse = DogApiResponse<String>.fromJson(response.data);
+
+    return dogApiResponse.message;
+  }
+
+  // List section
+
+  Future<List<String>> getImagesListByBreed(String breed) async {
+    final response = await _client.get('breed/$breed/images');
+
+    final dogApiResponse = DogApiResponse<List<String>>.fromJson(response.data);
+
+    return dogApiResponse.message;
+  }
+
+  Future<List<String>> getImagesListBySubBreed(String breed, String subBreed) async {
+    final response = await _client.get('breed/$breed/$subBreed/images');
+
+    final dogApiResponse = DogApiResponse<List<String>>.fromJson(response.data);
 
     return dogApiResponse.message;
   }
@@ -57,4 +77,18 @@ FutureOr<String> getImageBySubBreed(
   String subBreed,
 ) {
   return ref.watch(dogApiRepositoryProvider).getRandomImageBySubBreed(breed, subBreed);
+}
+
+@riverpod
+FutureOr<List<String>> getImagesListByBreed(GetImagesListByBreedRef ref, String breed) {
+  return ref.watch(dogApiRepositoryProvider).getImagesListByBreed(breed);
+}
+
+@riverpod
+FutureOr<List<String>> getImagesListBySubBreed(
+  GetImagesListBySubBreedRef ref,
+  String breed,
+  String subBreed,
+) {
+  return ref.watch(dogApiRepositoryProvider).getImagesListBySubBreed(breed, subBreed);
 }

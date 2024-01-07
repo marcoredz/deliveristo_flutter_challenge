@@ -28,6 +28,8 @@ dynamic _messageFromJson(dynamic json) {
     return json.map(
       (k, e) => MapEntry(k, (e as List<dynamic>).map((e) => e as String).toList()),
     );
+  } else if (json is List) {
+    return (json).map((e) => e as String).toList();
   }
 
   throw ArgumentError.value(json, 'json', 'Invalid message type');
