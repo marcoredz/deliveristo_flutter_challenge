@@ -4,7 +4,7 @@ part 'dog_api_response.g.dart';
 
 @JsonSerializable()
 class DogApiResponse<T> {
-  @JsonKey(fromJson: _messageFromJson, toJson: _messageToJson)
+  @JsonKey(fromJson: messageFromJson, toJson: _messageToJson)
   final T message;
   final String status;
 
@@ -21,7 +21,7 @@ dynamic _messageToJson(dynamic message) {
   return message;
 }
 
-dynamic _messageFromJson(dynamic json) {
+dynamic messageFromJson(dynamic json) {
   if (json is String) {
     return json;
   } else if (json is Map<String, dynamic>) {

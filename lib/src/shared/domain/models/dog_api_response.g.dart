@@ -8,7 +8,7 @@ part of 'dog_api_response.dart';
 
 DogApiResponse<T> _$DogApiResponseFromJson<T>(Map<String, dynamic> json) =>
     DogApiResponse<T>(
-      message: _messageFromJson(json['message']),
+      message: messageFromJson(json['message']),
       status: json['status'] as String,
     );
 
