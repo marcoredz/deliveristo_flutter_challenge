@@ -1,94 +1,94 @@
-import 'package:deliveristo_flutter_challenge/src/shared/domain/models/breeds.dart';
-import 'package:deliveristo_flutter_challenge/src/shared/domain/models/dog_api_response.dart';
-import 'package:deliveristo_flutter_challenge/src/shared/domain/providers/dio_client_provider.dart';
-import 'package:dio/dio.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+// import 'package:deliveristo_flutter_challenge/src/shared/domain/models/breeds.dart';
+// import 'package:deliveristo_flutter_challenge/src/shared/domain/models/dog_api_response.dart';
+// import 'package:deliveristo_flutter_challenge/src/shared/domain/providers/dio_client_provider.dart';
+// import 'package:dio/dio.dart';
+// import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'dog_api_repository.g.dart';
+// part 'dog_api_repository.g.dart';
 
-final dogApiRepositoryProvider = Provider<DogApiRepository>(
-  (ref) => DogApiRepository(ref.watch(dioProvider)),
-);
+// final dogApiRepositoryProvider = Provider<DogApiRepository>(
+//   (ref) => DogApiRepository(ref.watch(dioProvider)),
+// );
 
-class DogApiRepository {
-  final Dio _client;
+// class DogApiRepository {
+//   final Dio _client;
 
-  const DogApiRepository(this._client);
+//   const DogApiRepository(this._client);
 
-  Future<Breeds> getAllBreeds() async {
-    final response = await _client.get('breeds/list/all');
+//   Future<Breeds> getAllBreeds() async {
+//     final response = await _client.get('breeds/list/all');
 
-    final dogApiResponse = DogApiResponse<Breeds>.fromJson(response.data);
+//     final dogApiResponse = DogApiResponse<Breeds>.fromJson(response.data);
 
-    return dogApiResponse.message;
-  }
+//     return dogApiResponse.message;
+//   }
 
-  // Random section
+//   // Random section
 
-  Future<String> getRandomImageByBreed(String breed) async {
-    final response = await _client.get('breed/$breed/images/random');
+//   Future<String> getRandomImageByBreed(String breed) async {
+//     final response = await _client.get('breed/$breed/images/random');
 
-    final dogApiResponse = DogApiResponse<String>.fromJson(response.data);
+//     final dogApiResponse = DogApiResponse<String>.fromJson(response.data);
 
-    return dogApiResponse.message;
-  }
+//     return dogApiResponse.message;
+//   }
 
-  Future<String> getRandomImageBySubBreed(String breed, String subBreed) async {
-    final response = await _client.get('breed/$breed/$subBreed/images/random');
+//   Future<String> getRandomImageBySubBreed(String breed, String subBreed) async {
+//     final response = await _client.get('breed/$breed/$subBreed/images/random');
 
-    final dogApiResponse = DogApiResponse<String>.fromJson(response.data);
+//     final dogApiResponse = DogApiResponse<String>.fromJson(response.data);
 
-    return dogApiResponse.message;
-  }
+//     return dogApiResponse.message;
+//   }
 
-  // List section
+//   // List section
 
-  Future<List<String>> getImagesListByBreed(String breed) async {
-    final response = await _client.get('breed/$breed/images');
+//   Future<List<String>> getImagesListByBreed(String breed) async {
+//     final response = await _client.get('breed/$breed/images');
 
-    final dogApiResponse = DogApiResponse<List<String>>.fromJson(response.data);
+//     final dogApiResponse = DogApiResponse<List<String>>.fromJson(response.data);
 
-    return dogApiResponse.message;
-  }
+//     return dogApiResponse.message;
+//   }
 
-  Future<List<String>> getImagesListBySubBreed(String breed, String subBreed) async {
-    final response = await _client.get('breed/$breed/$subBreed/images');
+//   Future<List<String>> getImagesListBySubBreed(String breed, String subBreed) async {
+//     final response = await _client.get('breed/$breed/$subBreed/images');
 
-    final dogApiResponse = DogApiResponse<List<String>>.fromJson(response.data);
+//     final dogApiResponse = DogApiResponse<List<String>>.fromJson(response.data);
 
-    return dogApiResponse.message;
-  }
-}
+//     return dogApiResponse.message;
+//   }
+// }
 
-@riverpod
-FutureOr<Breeds> getAllBreeds(GetAllBreedsRef ref) {
-  return ref.watch(dogApiRepositoryProvider).getAllBreeds();
-}
+// @riverpod
+// FutureOr<Breeds> getAllBreeds(GetAllBreedsRef ref) {
+//   return ref.watch(dogApiRepositoryProvider).getAllBreeds();
+// }
 
-@riverpod
-FutureOr<String> getImageByBreed(GetImageByBreedRef ref, String breed) {
-  return ref.watch(dogApiRepositoryProvider).getRandomImageByBreed(breed);
-}
+// @riverpod
+// FutureOr<String> getImageByBreed(GetImageByBreedRef ref, String breed) {
+//   return ref.watch(dogApiRepositoryProvider).getRandomImageByBreed(breed);
+// }
 
-@riverpod
-FutureOr<String> getImageBySubBreed(
-  GetImageBySubBreedRef ref,
-  String breed,
-  String subBreed,
-) {
-  return ref.watch(dogApiRepositoryProvider).getRandomImageBySubBreed(breed, subBreed);
-}
+// @riverpod
+// FutureOr<String> getImageBySubBreed(
+//   GetImageBySubBreedRef ref,
+//   String breed,
+//   String subBreed,
+// ) {
+//   return ref.watch(dogApiRepositoryProvider).getRandomImageBySubBreed(breed, subBreed);
+// }
 
-@riverpod
-FutureOr<List<String>> getImagesListByBreed(GetImagesListByBreedRef ref, String breed) {
-  return ref.watch(dogApiRepositoryProvider).getImagesListByBreed(breed);
-}
+// @riverpod
+// FutureOr<List<String>> getImagesListByBreed(GetImagesListByBreedRef ref, String breed) {
+//   return ref.watch(dogApiRepositoryProvider).getImagesListByBreed(breed);
+// }
 
-@riverpod
-FutureOr<List<String>> getImagesListBySubBreed(
-  GetImagesListBySubBreedRef ref,
-  String breed,
-  String subBreed,
-) {
-  return ref.watch(dogApiRepositoryProvider).getImagesListBySubBreed(breed, subBreed);
-}
+// @riverpod
+// FutureOr<List<String>> getImagesListBySubBreed(
+//   GetImagesListBySubBreedRef ref,
+//   String breed,
+//   String subBreed,
+// ) {
+//   return ref.watch(dogApiRepositoryProvider).getImagesListBySubBreed(breed, subBreed);
+// }

@@ -1,7 +1,7 @@
-import 'package:deliveristo_flutter_challenge/src/features/images_list/images_list_section.dart';
-import 'package:deliveristo_flutter_challenge/src/features/random_image/random_image_section.dart';
-import 'package:deliveristo_flutter_challenge/src/features/select_breed/bottom_app_bar.dart';
-import 'package:deliveristo_flutter_challenge/src/features/select_breed/select_breed_notifier.dart';
+import 'package:deliveristo_flutter_challenge/src/features/images_list/presentation/images_list_section.dart';
+import 'package:deliveristo_flutter_challenge/src/features/random_image/presentation/random_image_section.dart';
+import 'package:deliveristo_flutter_challenge/src/features/select_breed/presentation/bottom_app_bar.dart';
+import 'package:deliveristo_flutter_challenge/src/features/select_breed/presentation/select_breed_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

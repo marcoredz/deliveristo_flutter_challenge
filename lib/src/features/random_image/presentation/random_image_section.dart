@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:deliveristo_flutter_challenge/src/features/select_breed/select_breed_notifier.dart';
-import 'package:deliveristo_flutter_challenge/src/shared/data/dog_api_repository.dart';
+import 'package:deliveristo_flutter_challenge/src/features/select_breed/presentation/select_breed_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../data/random_dog_repository.dart';
 
 final _randomImageProvider = FutureProvider.autoDispose<String>((ref) async {
   final selectedBreed = ref.watch(selectBreedProvider.select((state) => state.selectedBreed));

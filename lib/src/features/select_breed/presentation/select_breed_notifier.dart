@@ -1,4 +1,4 @@
-import 'package:deliveristo_flutter_challenge/src/shared/data/dog_api_repository.dart';
+import 'package:deliveristo_flutter_challenge/src/features/select_breed/data/breed_list_repository.dart';
 import 'package:deliveristo_flutter_challenge/src/shared/domain/models/breeds.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

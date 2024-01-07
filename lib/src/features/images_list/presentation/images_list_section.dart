@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:deliveristo_flutter_challenge/src/features/select_breed/select_breed_notifier.dart';
-import 'package:deliveristo_flutter_challenge/src/shared/data/dog_api_repository.dart';
+import 'package:deliveristo_flutter_challenge/src/features/images_list/data/dog_list_repository.dart';
+import 'package:deliveristo_flutter_challenge/src/features/select_breed/presentation/select_breed_notifier.dart';
 import 'package:deliveristo_flutter_challenge/src/shared/widgets/multi_sliver_widget/multi_sliver_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
