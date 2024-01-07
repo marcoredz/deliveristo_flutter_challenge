@@ -32,6 +32,8 @@ class CustomBottomAppBar extends StatelessWidget {
               child: TextButton(
                 child: Text(selectedBreed != null ? selectedBreed.key : 'Scegli la razza'),
                 onPressed: () {
+                  ref.read(selectBreedProvider.notifier).loadBreeds();
+
                   showModalBottomSheet<void>(
                     context: context,
                     builder: (BuildContext context) {
