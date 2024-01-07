@@ -6,14 +6,14 @@ import 'images_list/images_list_section.dart';
 import 'random_image/random_image_section.dart';
 import 'select_breed/bottom_app_bar.dart';
 
-class MainScreen extends ConsumerStatefulWidget {
+class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _MainScreenState();
+  State<StatefulWidget> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends ConsumerState<MainScreen> {
+class _MainScreenState extends State<MainScreen> {
   late final ScrollController scrollController;
   bool showBackToTopButton = false;
 
@@ -29,6 +29,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
           }
         });
       });
+
     super.initState();
   }
 
