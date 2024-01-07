@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:deliveristo_flutter_challenge/data/dog_api_repository.dart';
-import 'package:deliveristo_flutter_challenge/presentation/select_breed/select_breed_notifier.dart';
+import 'package:deliveristo_flutter_challenge/src/data/dog_api_repository.dart';
+import 'package:deliveristo_flutter_challenge/src/presentation/select_breed/select_breed_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

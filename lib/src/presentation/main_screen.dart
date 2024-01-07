@@ -1,4 +1,4 @@
-import 'package:deliveristo_flutter_challenge/presentation/select_breed/select_breed_notifier.dart';
+import 'package:deliveristo_flutter_challenge/src/presentation/select_breed/select_breed_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

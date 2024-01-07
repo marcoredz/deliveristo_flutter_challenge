@@ -1,9 +1,9 @@
-import 'package:deliveristo_flutter_challenge/presentation/select_breed/select_breed_notifier.dart';
-import 'package:deliveristo_flutter_challenge/presentation/widgets/bottom_sheet_tile.dart';
+import 'package:deliveristo_flutter_challenge/src/presentation/widgets/bottom_sheet_tile.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'select_breed_notifier.dart';
 import 'widgets/select_breed_list_view.dart';
 
 class SelectBreedBottomSheet extends ConsumerStatefulWidget {

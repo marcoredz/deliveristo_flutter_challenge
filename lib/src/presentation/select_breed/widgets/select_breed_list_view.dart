@@ -1,6 +1,6 @@
-import 'package:deliveristo_flutter_challenge/data/dog_api_repository.dart';
-import 'package:deliveristo_flutter_challenge/data/models/breeds.dart';
-import 'package:deliveristo_flutter_challenge/presentation/select_breed/select_breed_notifier.dart';
+import 'package:deliveristo_flutter_challenge/src/data/dog_api_repository.dart';
+import 'package:deliveristo_flutter_challenge/src/data/models/breeds.dart';
+import 'package:deliveristo_flutter_challenge/src/presentation/select_breed/select_breed_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

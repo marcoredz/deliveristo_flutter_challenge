@@ -1,4 +1,4 @@
-import 'package:deliveristo_flutter_challenge/data/models/breeds.dart';
+import 'package:deliveristo_flutter_challenge/src/data/models/breeds.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SelectBreedState {

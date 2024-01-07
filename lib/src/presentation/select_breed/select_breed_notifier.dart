@@ -1,5 +1,5 @@
-import 'package:deliveristo_flutter_challenge/data/dog_api_repository.dart';
-import 'package:deliveristo_flutter_challenge/data/models/breeds.dart';
+import 'package:deliveristo_flutter_challenge/src/data/dog_api_repository.dart';
+import 'package:deliveristo_flutter_challenge/src/data/models/breeds.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'select_breed_state.dart';

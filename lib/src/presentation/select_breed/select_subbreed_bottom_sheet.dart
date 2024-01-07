@@ -1,4 +1,4 @@
-import 'package:deliveristo_flutter_challenge/presentation/widgets/bottom_sheet_tile.dart';
+import 'package:deliveristo_flutter_challenge/src/presentation/widgets/bottom_sheet_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

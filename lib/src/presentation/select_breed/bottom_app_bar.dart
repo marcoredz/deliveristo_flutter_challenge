@@ -1,8 +1,8 @@
-import 'package:deliveristo_flutter_challenge/presentation/select_breed/select_breed_bottom_sheet.dart';
-import 'package:deliveristo_flutter_challenge/presentation/select_breed/select_breed_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'select_breed_bottom_sheet.dart';
+import 'select_breed_notifier.dart';
 import 'select_subbreed_bottom_sheet.dart';
 
 class CustomBottomAppBar extends StatelessWidget {

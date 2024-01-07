@@ -1,8 +1,9 @@
-import 'package:deliveristo_flutter_challenge/core/http_client.dart';
-import 'package:deliveristo_flutter_challenge/data/models/breeds.dart';
-import 'package:deliveristo_flutter_challenge/data/models/dog_api_response.dart';
+import 'package:deliveristo_flutter_challenge/src/core/http_client.dart';
 import 'package:dio/dio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import 'models/breeds.dart';
+import 'models/dog_api_response.dart';
 
 part 'dog_api_repository.g.dart';
 
