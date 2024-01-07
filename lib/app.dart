@@ -14,7 +14,10 @@ class MainApp extends StatelessWidget {
       child: MaterialApp(
         theme: appTheme,
         home: Scaffold(
-          appBar: AppBar(title: null),
+          appBar: AppBar(
+            title: const Text('Deliveristo Challenge'),
+            centerTitle: true,
+          ),
           body: const MainScreen(),
           floatingActionButton: const SizedBox.shrink(),
           bottomNavigationBar: const CustomBottomAppBar(),
