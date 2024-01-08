@@ -8,6 +8,9 @@ import 'select_subbreed_bottom_sheet.dart';
 const kSelectBreedButtonKey = Key('select_breed_button');
 const kSelectBreedBottomSheetKey = Key('select_breed_bottom_sheet');
 
+const kSelectSubBreedButtonKey = Key('select_sub_breed_button');
+const kSelectSubBreedBottomSheetKey = Key('select_sub_breed_bottom_sheet');
+
 class CustomBottomAppBar extends StatelessWidget {
   const CustomBottomAppBar({super.key});
 
@@ -52,12 +55,14 @@ class CustomBottomAppBar extends StatelessWidget {
             const SizedBox(width: 16),
             Expanded(
               child: TextButton(
+                key: kSelectSubBreedButtonKey,
                 onPressed: selectedBreed != null && selectedBreed.value.isNotEmpty
                     ? () {
                         showModalBottomSheet<void>(
                           context: context,
                           builder: (BuildContext context) {
                             return SelectSubBreedBottomSheet(
+                              key: kSelectSubBreedBottomSheetKey,
                               subBreeds: selectedBreed.value,
                               selectedSubBreed: selectedSubBreed,
                             );

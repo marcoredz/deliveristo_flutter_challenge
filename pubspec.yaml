@@ -17,7 +17,6 @@ dependencies:
   cached_network_image: ^3.3.1
   riverpod_annotation: ^2.3.3
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -25,6 +24,8 @@ dev_dependencies:
   json_serializable: ^6.7.0
   build_runner: ^2.4.4
   riverpod_generator: ^2.3.9
+  integration_test:
+    sdk: flutter
 
 flutter:
   uses-material-design: true

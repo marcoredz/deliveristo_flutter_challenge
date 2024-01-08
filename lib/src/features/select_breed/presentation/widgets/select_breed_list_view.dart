@@ -4,6 +4,8 @@ import 'package:deliveristo_flutter_challenge/src/shared/domain/models/breeds.da
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+const kSubBreedListTileTextKey = Key('sub_breed_list_tile_text');
+
 class SelectBreedListView extends ConsumerWidget {
   const SelectBreedListView({super.key});
 
@@ -24,8 +26,12 @@ class SelectBreedListView extends ConsumerWidget {
           return ListTile(
             title: Text(breed.key),
             trailing: isSelected ? const Icon(Icons.check) : null,
-            subtitle:
-                (subBreeds.isNotEmpty == true) ? Text('Sottorazze: ${subBreeds.join(', ')}') : null,
+            subtitle: (subBreeds.isNotEmpty == true)
+                ? Text(
+                    key: kSubBreedListTileTextKey,
+                    'Sottorazze: ${subBreeds.join(', ')}',
+                  )
+                : null,
             onTap: () {
               ref.read(selectBreedProvider.notifier).selectBreed(breed);
               Navigator.pop(context);

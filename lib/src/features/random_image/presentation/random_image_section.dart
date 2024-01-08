@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+const kNewRandomImageButton = Key('new_random_image_button');
+
 final _randomImageProvider = FutureProvider.autoDispose<String>((ref) async {
   final selectedBreed = ref.watch(selectBreedProvider.select((state) => state.selectedBreed));
   if (selectedBreed == null) return '';
@@ -46,6 +48,7 @@ class RandomImageSection extends ConsumerWidget {
               ),
             ),
             ElevatedButton.icon(
+              key: kNewRandomImageButton,
               icon: const FaIcon(
                 FontAwesomeIcons.arrowsRotate,
                 size: 16,
