@@ -28,4 +28,27 @@ class SelectBreedState {
       searchText: searchText ?? this.searchText,
     );
   }
+
+  @override
+  String toString() {
+    return 'SelectBreedState(breeds: $breeds, selectedBreed: $selectedBreed, selectedSubBreed: $selectedSubBreed, searchText: $searchText)';
+  }
+
+  @override
+  bool operator ==(covariant SelectBreedState other) {
+    if (identical(this, other)) return true;
+
+    return other.breeds == breeds &&
+        other.selectedBreed == selectedBreed &&
+        other.selectedSubBreed == selectedSubBreed &&
+        other.searchText == searchText;
+  }
+
+  @override
+  int get hashCode {
+    return breeds.hashCode ^
+        selectedBreed.hashCode ^
+        selectedSubBreed.hashCode ^
+        searchText.hashCode;
+  }
 }
