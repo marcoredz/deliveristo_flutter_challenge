@@ -41,6 +41,7 @@ class _SelectBreedBottomSheetState extends ConsumerState<SelectBreedBottomSheet>
     const spacing = 16.0;
 
     return DraggableScrollableSheet(
+      key: const Key('select_breed_draggable_scroll_sheet'),
       initialChildSize: 1,
       builder: (context, scrollController) => Padding(
         padding: const EdgeInsets.all(paddingValue),

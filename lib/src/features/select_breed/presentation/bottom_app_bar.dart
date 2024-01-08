@@ -30,6 +30,7 @@ class CustomBottomAppBar extends StatelessWidget {
           children: [
             Expanded(
               child: TextButton(
+                key: const Key('select_breed_button'),
                 child: Text(selectedBreed != null ? selectedBreed.key : 'Scegli la razza'),
                 onPressed: () {
                   ref.read(selectBreedProvider.notifier).loadBreeds();

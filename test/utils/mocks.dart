@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 Override mockGetAllBreedsProvider() => getAllBreedsProvider.overrideWith(
       (ref) async {
-        await Future.delayed(const Duration(seconds: 1));
+        await Future.delayed(const Duration(milliseconds: 100));
 
         return {
           'appenzeller': [],
