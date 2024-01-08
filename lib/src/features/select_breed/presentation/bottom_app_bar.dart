@@ -5,6 +5,9 @@ import 'select_breed_bottom_sheet.dart';
 import 'select_breed_notifier.dart';
 import 'select_subbreed_bottom_sheet.dart';
 
+const kSelectBreedButtonKey = Key('select_breed_button');
+const kSelectBreedBottomSheetKey = Key('select_breed_bottom_sheet');
+
 class CustomBottomAppBar extends StatelessWidget {
   const CustomBottomAppBar({super.key});
 
@@ -30,7 +33,7 @@ class CustomBottomAppBar extends StatelessWidget {
           children: [
             Expanded(
               child: TextButton(
-                key: const Key('select_breed_button'),
+                key: kSelectBreedButtonKey,
                 child: Text(selectedBreed != null ? selectedBreed.key : 'Scegli la razza'),
                 onPressed: () {
                   ref.read(selectBreedProvider.notifier).loadBreeds();
@@ -38,7 +41,7 @@ class CustomBottomAppBar extends StatelessWidget {
                   showModalBottomSheet<void>(
                     context: context,
                     builder: (BuildContext context) {
-                      return const SelectBreedBottomSheet();
+                      return const SelectBreedBottomSheet(key: kSelectBreedBottomSheetKey);
                     },
                     useSafeArea: true,
                     isScrollControlled: true,

@@ -11,9 +11,9 @@ when pressing on "select breed" button, show the modal bottom sheet.
 then, when pressing on search bar back arrow, close the modal.
 ''', (tester) async {
     await tester.pumpWidget(
-      UncontrolledProviderScope(
+      ProviderScope(
         // Override getAllBreedsProvider so the widget test won't use Dio inside 'loadBreeds' method.
-        container: ProviderContainer(overrides: [mockGetAllBreedsProvider()]),
+        overrides: [mockGetAllBreedsProvider()],
         child: const MaterialApp(
           home: Scaffold(
             bottomNavigationBar: CustomBottomAppBar(),
@@ -24,14 +24,14 @@ then, when pressing on search bar back arrow, close the modal.
 
     // Open the modal
 
-    final selectBreedButton = find.byKey(const Key('select_breed_button'));
+    final selectBreedButton = find.byKey(kSelectBreedButtonKey);
     expect(selectBreedButton, findsOneWidget);
 
     // Press on the button
     await tester.tap(selectBreedButton);
     await tester.pumpAndSettle();
 
-    final draggableScrollSheet = find.byKey(const Key('select_breed_draggable_scroll_sheet'));
+    final draggableScrollSheet = find.byKey(kSelectBreedBottomSheetKey);
     expect(draggableScrollSheet, findsOneWidget);
 
     // Close the modal
