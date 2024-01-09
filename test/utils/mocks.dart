@@ -1,24 +1,23 @@
 import 'package:deliveristo_flutter_challenge/src/features/select_breed/data/breed_list_repository.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mocktail/mocktail.dart';
 
-/// getAllBreedsProviderProvider mock
-Override mockGetAllBreedsProvider() => getAllBreedsProvider.overrideWith(
-      (ref) async {
-        await Future.delayed(const Duration(milliseconds: 500));
+class MockBreedListRepository extends Mock implements BreedListRepository {}
 
-        return {
-          'appenzeller': [],
-          'australian': ['shepherd'],
-          'labrador': [],
-          'hound': [
-            'afghan',
-            'basset',
-            'blood',
-            'english',
-            'ibizan',
-            'plott',
-            'walker',
-          ],
-        };
-      },
+/// Util method to mock the getAllBreeds method of BreedListRepository
+void mockGetAllBreeds(MockBreedListRepository repository) =>
+    when(repository.getAllBreeds).thenAnswer(
+      (_) => Future.value({
+        'appenzeller': [],
+        'australian': ['shepherd'],
+        'labrador': [],
+        'hound': [
+          'afghan',
+          'basset',
+          'blood',
+          'english',
+          'ibizan',
+          'plott',
+          'walker',
+        ],
+      }),
     );

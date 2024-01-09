@@ -1,4 +1,6 @@
+import 'package:deliveristo_flutter_challenge/src/features/select_breed/data/breed_list_repository.dart';
 import 'package:deliveristo_flutter_challenge/src/features/select_breed/presentation/bottom_app_bar.dart';
+import 'package:deliveristo_flutter_challenge/src/features/select_breed/presentation/select_breed_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -6,14 +8,23 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../../../utils/mocks.dart';
 
 void main() {
-  testWidgets('''
+  late final MockBreedListRepository mockBreedListRepository;
+
+  setUp(() {
+    mockBreedListRepository = MockBreedListRepository();
+  });
+
+  testWidgets(
+      '''
 when pressing on "select breed" button, show the modal bottom sheet.
 then, when pressing on search bar back arrow, close the modal.
-''', (tester) async {
+''',
+      (tester) async {
     await tester.pumpWidget(
       ProviderScope(
-        // Override getAllBreedsProvider so the widget test won't use Dio inside 'loadBreeds' method.
-        overrides: [mockGetAllBreedsProvider()],
+        overrides: [
+          breedListRepositoryProvider.overrideWith((ref) => mockBreedListRepository),
+        ],
         child: const MaterialApp(
           home: Scaffold(
             bottomNavigationBar: CustomBottomAppBar(),
@@ -21,6 +32,8 @@ then, when pressing on search bar back arrow, close the modal.
         ),
       ),
     );
+
+    mockGetAllBreeds(mockBreedListRepository);
 
     // Open the modal
 
@@ -36,7 +49,7 @@ then, when pressing on search bar back arrow, close the modal.
 
     // Close the modal
 
-    final backArrow = find.byIcon(Icons.arrow_back);
+    final backArrow = find.byKey(kSelectBreedBottomSheetArrowBackKey);
     expect(backArrow, findsOneWidget);
 
     // Press on search bar back arrow

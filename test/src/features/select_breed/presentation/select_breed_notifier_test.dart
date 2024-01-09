@@ -1,3 +1,4 @@
+import 'package:deliveristo_flutter_challenge/src/features/select_breed/data/breed_list_repository.dart';
 import 'package:deliveristo_flutter_challenge/src/features/select_breed/presentation/select_breed_notifier.dart';
 import 'package:deliveristo_flutter_challenge/src/features/select_breed/presentation/select_breed_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,6 +8,12 @@ import '../../../../utils/mocks.dart';
 import '../../../../utils/utils.dart';
 
 void main() {
+  late final MockBreedListRepository mockBreedListRepository;
+
+  setUpAll(() {
+    mockBreedListRepository = MockBreedListRepository();
+  });
+
   group('SelectBreed notifier -', () {
     test(
         '''selectBreed should update selectedBreed 
@@ -15,9 +22,11 @@ void main() {
         () {
       final container = createContainer(
         overrides: [
-          mockGetAllBreedsProvider(),
+          breedListRepositoryProvider.overrideWith((ref) => mockBreedListRepository),
         ],
       );
+
+      mockGetAllBreeds(mockBreedListRepository);
 
       final selectBreedNotifier = container.read(selectBreedProvider.notifier);
       const breed = MapEntry('labrador', <String>[]);
@@ -37,9 +46,12 @@ void main() {
     test('filterBreedsByName should filter breeds by breed name (case-insensitive)', () async {
       final container = createContainer(
         overrides: [
-          mockGetAllBreedsProvider(),
+          breedListRepositoryProvider.overrideWith((ref) => mockBreedListRepository),
         ],
       );
+
+      mockGetAllBreeds(mockBreedListRepository);
+
       final selectBreedNotifier = container.read(selectBreedProvider.notifier);
 
       await selectBreedNotifier.loadBreeds();
@@ -58,9 +70,12 @@ void main() {
         () async {
       final container = createContainer(
         overrides: [
-          mockGetAllBreedsProvider(),
+          breedListRepositoryProvider.overrideWith((ref) => mockBreedListRepository),
         ],
       );
+
+      mockGetAllBreeds(mockBreedListRepository);
+
       final selectBreedNotifier = container.read(selectBreedProvider.notifier);
 
       await selectBreedNotifier.loadBreeds();
