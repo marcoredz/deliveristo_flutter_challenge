@@ -20,13 +20,7 @@ void main() {
             and set to null selectedSubBreed
         ''',
         () {
-      final container = createContainer(
-        overrides: [
-          breedListRepositoryProvider.overrideWith((ref) => mockBreedListRepository),
-        ],
-      );
-
-      mockGetAllBreeds(mockBreedListRepository);
+      final container = createContainer();
 
       final selectBreedNotifier = container.read(selectBreedProvider.notifier);
       const breed = MapEntry('labrador', <String>[]);
