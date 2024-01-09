@@ -71,6 +71,7 @@ class _MainScreenState extends State<MainScreen> {
             child: CustomScrollView(
               controller: scrollController,
               slivers: const [
+                SliverToBoxAdapter(child: SizedBox(height: 16)),
                 SliverToBoxAdapter(
                   child: RandomImageSection(),
                 ),
