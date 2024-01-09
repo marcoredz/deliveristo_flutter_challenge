@@ -10,23 +10,27 @@ part 'select_breed_notifier.g.dart';
 class SelectBreed extends _$SelectBreed {
   Breeds _originalBreeds = {};
 
+  late final BreedListRepository _breedListRepository;
+
   @override
   SelectBreedState build() {
+    _breedListRepository = ref.watch(breedListRepositoryProvider);
+
     // Initial state
     return const SelectBreedState();
   }
 
   Future<void> loadBreeds() async {
     // Preserve previous text search
-    if (state.breeds.requireValue.isNotEmpty) return;
+    if (!state.breeds.hasError && state.breeds.requireValue.isNotEmpty) return;
+
+    state = state.copyWith(breeds: const AsyncLoading());
 
     state = state.copyWith(
-      breeds: const AsyncLoading(),
+      breeds: await AsyncValue.guard(() => _breedListRepository.getAllBreeds()),
     );
 
-    state = state.copyWith(
-      breeds: await AsyncValue.guard(() => ref.watch(getAllBreedsProvider.future)),
-    );
+    if (state.breeds.hasError) return;
 
     _originalBreeds = state.breeds.requireValue;
   }

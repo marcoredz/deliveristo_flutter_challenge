@@ -6,7 +6,7 @@ part of 'breed_list_repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$getAllBreedsHash() => r'4fe315603fd53daf2ec075af9d93d9e0b8cef3c9';
+String _$getAllBreedsHash() => r'6f46231bcec23036e83df4782c62c32ce8768136';
 
 /// See also [getAllBreeds].
 @ProviderFor(getAllBreeds)

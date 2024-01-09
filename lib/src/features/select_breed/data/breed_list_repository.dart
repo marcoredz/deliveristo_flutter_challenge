@@ -25,6 +25,13 @@ class BreedListRepository {
 }
 
 @riverpod
-FutureOr<Breeds> getAllBreeds(GetAllBreedsRef ref) {
-  return ref.watch(breedListRepositoryProvider).getAllBreeds();
+FutureOr<Breeds> getAllBreeds(GetAllBreedsRef ref) async {
+  final res = await ref.watch(breedListRepositoryProvider).getAllBreeds();
+
+  // We keep the provider alive only after the request has successfully completed.
+  // If the request failed (and threw), then when the provider stops being
+  // listened, the state will be destroyed.
+  ref.keepAlive();
+
+  return res;
 }

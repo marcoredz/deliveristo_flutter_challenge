@@ -6,7 +6,7 @@ part of 'select_breed_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$selectBreedHash() => r'01eb0dbea68f1afe83c1ad449545b2705997d755';
+String _$selectBreedHash() => r'978fda869f2176d7119f77a93e196c3018733715';
 
 /// See also [SelectBreed].
 @ProviderFor(SelectBreed)
