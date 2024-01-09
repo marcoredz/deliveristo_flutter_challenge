@@ -2,6 +2,7 @@ import 'package:deliveristo_flutter_challenge/src/features/images_list/data/dog_
 import 'package:deliveristo_flutter_challenge/src/features/main_screen.dart';
 import 'package:deliveristo_flutter_challenge/src/features/random_image/data/random_dog_repository.dart';
 import 'package:deliveristo_flutter_challenge/src/features/random_image/presentation/random_image_section.dart';
+import 'package:deliveristo_flutter_challenge/src/features/select_breed/data/breed_list_repository.dart';
 import 'package:deliveristo_flutter_challenge/src/features/select_breed/presentation/bottom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,6 +12,12 @@ import 'package:integration_test/integration_test.dart';
 import '../test/utils/mocks.dart';
 
 void main() {
+  late final MockBreedListRepository mockBreedListRepository;
+
+  setUpAll(() {
+    mockBreedListRepository = MockBreedListRepository();
+  });
+
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   group('show random dog image and dog images list test', () {
@@ -36,7 +43,7 @@ void main() {
           ProviderScope(
             // Override so the widget test won't use Dio inside methods.
             overrides: [
-              mockGetAllBreedsProvider(),
+              breedListRepositoryProvider.overrideWith((ref) => mockBreedListRepository),
               getImageByBreedProvider(selectedBreed).overrideWith((ref) async {
                 await Future.delayed(const Duration(milliseconds: 500));
 
@@ -51,6 +58,8 @@ void main() {
             child: const MaterialApp(home: MainScreen()),
           ),
         );
+
+        mockGetAllBreeds(mockBreedListRepository);
 
         // Select breed
         final selectBreedButton = find.byKey(kSelectBreedButtonKey);
@@ -100,7 +109,7 @@ void main() {
         ProviderScope(
           // Override so the widget test won't use Dio inside methods.
           overrides: [
-            mockGetAllBreedsProvider(),
+            breedListRepositoryProvider.overrideWith((ref) => mockBreedListRepository),
             getImageByBreedProvider(selectedBreed).overrideWith((_) async {
               await Future.delayed(const Duration(milliseconds: 500));
 
@@ -132,6 +141,8 @@ void main() {
           child: const MaterialApp(home: MainScreen()),
         ),
       );
+
+      mockGetAllBreeds(mockBreedListRepository);
 
       // Open select breed modal
       final selectBreedButton = find.byKey(kSelectBreedButtonKey);
