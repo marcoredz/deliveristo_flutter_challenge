@@ -8,6 +8,8 @@ part 'select_breed_notifier.g.dart';
 
 @riverpod
 class SelectBreed extends _$SelectBreed {
+  Breeds _originalBreeds = {};
+
   @override
   SelectBreedState build() {
     // Initial state
@@ -25,6 +27,8 @@ class SelectBreed extends _$SelectBreed {
     state = state.copyWith(
       breeds: await AsyncValue.guard(() => ref.watch(getAllBreedsProvider.future)),
     );
+
+    _originalBreeds = state.breeds.requireValue;
   }
 
   void selectBreed(Breed breed) {
@@ -44,19 +48,17 @@ class SelectBreed extends _$SelectBreed {
   }
 
   void filterBreedsByName(String name) {
-    final breeds = state.breeds.requireValue;
-
     // If the user clear the search text, get all the breeds
     if (name.isEmpty) {
       state = state.copyWith(
-        breeds: ref.watch(getAllBreedsProvider),
+        breeds: AsyncData(_originalBreeds),
         searchText: '',
       );
       return;
     }
 
     // Filter the map entries by name
-    final filteredBreeds = breeds.entries.where(
+    final filteredBreeds = _originalBreeds.entries.where(
       (entry) => entry.key.toLowerCase().contains(name.toLowerCase()),
     );
 

@@ -8,9 +8,11 @@ import '../../../../utils/utils.dart';
 
 void main() {
   group('SelectBreed notifier -', () {
-    test('''selectBreed should update selectedBreed 
+    test(
+        '''selectBreed should update selectedBreed 
             and set to null selectedSubBreed
-        ''', () async {
+        ''',
+        () {
       final container = createContainer(
         overrides: [
           mockGetAllBreedsProvider(),
@@ -47,6 +49,33 @@ void main() {
       final filteredBreeds = selectBreedNotifier.state.breeds.requireValue;
       expect(filteredBreeds.keys.toList(), ['labrador']);
       expect(selectBreedNotifier.state.searchText, 'Lab');
+    });
+
+    test(
+        '''filterBreedsByName should filter breeds by breed name (case-insensitive) 
+            even when the user is deleting letters after an empty result search
+        ''',
+        () async {
+      final container = createContainer(
+        overrides: [
+          mockGetAllBreedsProvider(),
+        ],
+      );
+      final selectBreedNotifier = container.read(selectBreedProvider.notifier);
+
+      await selectBreedNotifier.loadBreeds();
+
+      // digit a breed query that doesn't find any breed
+      selectBreedNotifier.filterBreedsByName('Labt');
+      final filteredBreeds = selectBreedNotifier.state.breeds.requireValue;
+      // expect to find nothing
+      expect(filteredBreeds.keys.toList(), []);
+
+      // simulate a canc action
+      selectBreedNotifier.filterBreedsByName('lab');
+      final newFilteredBreeds = selectBreedNotifier.state.breeds.requireValue;
+      // expect to find the breed
+      expect(newFilteredBreeds.keys.toList(), ['labrador']);
     });
   });
 }
