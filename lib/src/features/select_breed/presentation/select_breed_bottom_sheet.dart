@@ -2,9 +2,12 @@ import 'package:deliveristo_flutter_challenge/src/shared/widgets/bottom_sheet_ti
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'select_breed_notifier.dart';
 import 'widgets/select_breed_list_view.dart';
+
+const kSelectBreedBottomSheetArrowBackKey = Key('select_breed_arrow_back');
 
 class SelectBreedBottomSheet extends ConsumerStatefulWidget {
   const SelectBreedBottomSheet({super.key});
@@ -52,8 +55,9 @@ class _SelectBreedBottomSheetState extends ConsumerState<SelectBreedBottomSheet>
               controller: searchTextController,
               onChanged: onChangedEvent,
               leading: IconButton(
+                key: kSelectBreedBottomSheetArrowBackKey,
                 onPressed: () => Navigator.pop(context),
-                icon: const Icon(Icons.arrow_back),
+                icon: const FaIcon(FontAwesomeIcons.arrowLeft),
               ),
               trailing: [
                 IconButton(
@@ -61,7 +65,7 @@ class _SelectBreedBottomSheetState extends ConsumerState<SelectBreedBottomSheet>
                     searchTextController.clear();
                     onChangedEvent('');
                   },
-                  icon: const Icon(Icons.clear),
+                  icon: const FaIcon(FontAwesomeIcons.xmark),
                 ),
               ],
             ),

@@ -1,8 +1,8 @@
-import 'package:deliveristo_flutter_challenge/src/features/select_breed/data/breed_list_repository.dart';
 import 'package:deliveristo_flutter_challenge/src/features/select_breed/presentation/select_breed_notifier.dart';
 import 'package:deliveristo_flutter_challenge/src/shared/domain/models/breeds.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const kSubBreedListTileTextKey = Key('sub_breed_list_tile_text');
 
@@ -25,7 +25,7 @@ class SelectBreedListView extends ConsumerWidget {
 
           return ListTile(
             title: Text(breed.key),
-            trailing: isSelected ? const Icon(Icons.check) : null,
+            trailing: isSelected ? const FaIcon(FontAwesomeIcons.check) : null,
             subtitle: (subBreeds.isNotEmpty == true)
                 ? Text(
                     key: kSubBreedListTileTextKey,
@@ -43,13 +43,11 @@ class SelectBreedListView extends ConsumerWidget {
         // Report error
         debugPrint(error.toString());
 
-        ref.invalidate(getAllBreedsProvider);
-
         return const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.error),
+              FaIcon(FontAwesomeIcons.circleExclamation),
               SizedBox(height: 16),
               Text('Errore durante il caricamento. Riprovare'),
             ],

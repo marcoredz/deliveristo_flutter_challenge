@@ -4,6 +4,7 @@ import 'package:deliveristo_flutter_challenge/src/features/select_breed/presenta
 import 'package:deliveristo_flutter_challenge/src/features/select_breed/presentation/select_breed_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -86,7 +87,7 @@ class _MainScreenState extends State<MainScreen> {
           ? const SizedBox.shrink()
           : FloatingActionButton(
               onPressed: _scrollToTop,
-              child: const Icon(Icons.arrow_upward),
+              child: const FaIcon(FontAwesomeIcons.arrowUp),
             ),
       bottomNavigationBar: const CustomBottomAppBar(),
     );
