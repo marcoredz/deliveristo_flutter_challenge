@@ -1,30 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:deliveristo_flutter_challenge/src/features/random_image/data/random_dog_repository.dart';
-import 'package:deliveristo_flutter_challenge/src/features/select_breed/presentation/select_breed_notifier.dart';
+import 'package:deliveristo_flutter_challenge/src/features/random_image/services/random_image_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const kNewRandomImageButton = Key('new_random_image_button');
-
-final _randomImageProvider = FutureProvider.autoDispose<String>((ref) async {
-  final selectedBreed = ref.watch(selectBreedProvider.select((state) => state.selectedBreed));
-  if (selectedBreed == null) return '';
-
-  final selectedSubBreed = ref.watch(selectBreedProvider.select((state) => state.selectedSubBreed));
-
-  if (selectedSubBreed == null) {
-    final imageUrl = await ref.read(getImageByBreedProvider(selectedBreed.key).future);
-    return imageUrl;
-  }
-
-  final imageUrl = await ref.read(getImageBySubBreedProvider(
-    selectedBreed.key,
-    selectedSubBreed,
-  ).future);
-
-  return imageUrl;
-});
 
 class RandomImageSection extends ConsumerWidget {
   const RandomImageSection({super.key});
@@ -33,7 +13,7 @@ class RandomImageSection extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
 
-    final imageState = ref.watch(_randomImageProvider);
+    final imageState = ref.watch(randomImageProvider);
 
     return Column(
       children: [
@@ -56,7 +36,7 @@ class RandomImageSection extends ConsumerWidget {
               onPressed: imageState.isLoading
                   ? null
                   : () {
-                      ref.invalidate(_randomImageProvider);
+                      ref.invalidate(randomImageProvider);
                     },
               label: const Text('Nuova'),
             )
